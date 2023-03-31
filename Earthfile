@@ -21,6 +21,8 @@ pre-build:
 
 build:
     FROM +pre-build
+    # needed because musl aquire version information from .git
+    COPY .repo .repo
     COPY seL4 seL4
     COPY tools tools
     COPY sel4-riscv-mcs-sample sel4-riscv-mcs-sample
