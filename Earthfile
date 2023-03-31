@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-WORKDIR /sel4simple
+WORKDIR /sel4-riscv-mcs-sample
 
 pre-build:
     FROM sasusesoiwasi/prebuilt-riscv-gnu-toolchain
@@ -23,17 +23,17 @@ build:
     FROM +pre-build
     COPY seL4 seL4
     COPY tools tools
-    COPY sel4simple sel4simple
+    COPY sel4-riscv-mcs-sample sel4-riscv-mcs-sample
     COPY --dir libs libs
     #COPY --dir +build-riscv-toolchain/riscv-toolchain .
-    ENV PATH /sel4simple/riscv-toolchain/bin:$PATH
-    RUN echo $PATH && cd sel4simple && \
+    ENV PATH /sel4-riscv-mcs-sample/riscv-toolchain/bin:$PATH
+    RUN echo $PATH && cd sel4-riscv-mcs-sample && \
         # rm for prevent usage for build/ copied from out of Earthly build
         rm -rf build && mkdir build && cd build && \
         cmake .. -DCMAKE_BUILD_TYPE=Debug \
             -DCMAKE_TOOLCHAIN_FILE=../seL4/gcc.cmake \
             -DCROSS_COMPILER_PREFIX=riscv64-unknown-linux-gnu- --debug-output \
             -DKERNEL_PATH=../seL4 -DSIMULATION=TRUE -G Ninja
-    RUN cd sel4simple/build && ninja
-    SAVE ARTIFACT sel4simple/build AS LOCAL cmake_result
-    SAVE IMAGE sel4simple-dev
+    RUN cd sel4-riscv-mcs-sample/build && ninja
+    SAVE ARTIFACT sel4-riscv-mcs-sample/build AS LOCAL cmake_result
+    SAVE IMAGE sel4-riscv-mcs-sample-dev
