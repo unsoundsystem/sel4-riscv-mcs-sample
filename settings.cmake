@@ -19,8 +19,8 @@ set(OPENSBI_PATH "${project_dir}/tools/opensbi" CACHE STRING "OpenSBI Folder loc
 set(KernelIsMCS ON)
 set(KernelMCS TRUE)
 set(PLATFORM spike)
-ApplyCommonReleaseVerificationSettings(OFF OFF)
 
 include(application_settings)
+ApplyCommonReleaseVerificationSettings(OFF OFF)
 
 correct_platform_strings()

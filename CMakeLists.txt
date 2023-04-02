@@ -24,7 +24,6 @@ add_subdirectory(../libs/util_libs util_libs)
 add_subdirectory(../libs/seL4_libs seL4_libs)
 add_subdirectory(app)
 
-ApplyCommonReleaseVerificationSettings(FALSE FALSE)
 if(SIMULATION)
     ApplyCommonSimulationSettings(${KernelSel4Arch})
     GenerateSimulateScript()

@@ -38,4 +38,4 @@ build:
             -DKERNEL_PATH=../seL4 -DSIMULATION=TRUE -G Ninja
     RUN cd sel4-riscv-mcs-sample/build && ninja
     SAVE ARTIFACT sel4-riscv-mcs-sample/build AS LOCAL cmake_result
-    SAVE IMAGE sel4-riscv-mcs-sample-dev
+    #SAVE IMAGE sel4-riscv-mcs-sample-dev
