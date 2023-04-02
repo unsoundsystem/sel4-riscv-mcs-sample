@@ -13,11 +13,13 @@ message(STATUS "cmake modules path" ${CMAKE_MODULE_PATH})
 
 set(OPENSBI_PATH "${project_dir}/tools/opensbi" CACHE STRING "OpenSBI Folder location")
 
-set(KernelArch riscv)
-set(KernelSel4ArchRiscV64 TRUE)
-set(KernelWordSize 64)
+#set(KernelArch riscv)
+#set(KernelSel4ArchRiscV64 TRUE)
+#set(KernelWordSize 64)
+set(KernelIsMCS ON)
 set(KernelMCS TRUE)
 set(PLATFORM spike)
+ApplyCommonReleaseVerificationSettings(OFF OFF)
 
 include(application_settings)
 
